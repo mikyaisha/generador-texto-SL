@@ -135,15 +135,27 @@
     </div>
 
     <div class="container">
-        <h2>SL Link Generator 🔗</h2>
+        <h2>General SL Link 🔗</h2>
         
-        <input type="text" id="linkUrl" class="sl-input" placeholder="Paste the URL here (Ex: secondlife:///app/... or https://...)">
+        <input type="text" id="linkUrl" class="sl-input" placeholder="Paste the URL here (Ex: https://...)">
         
-        <input type="text" id="linkText" class="sl-input" placeholder="Text to display (Ex: Thank you for your donation)">
+        <input type="text" id="linkText" class="sl-input" placeholder="Text to display (Ex: My Website)">
         
         <input type="text" id="linkOutput" class="sl-input output-link" readonly placeholder="[The formatted link will appear here]">
         
         <button class="copy-btn" onclick="copyLink()" id="copyLinkBtn">Copy Link 🔗</button>
+    </div>
+
+    <div class="container">
+        <h2>Donation Link Generator 💸</h2>
+        
+        <input type="text" id="donationUuid" class="sl-input" placeholder="Paste your account UUID here">
+        
+        <input type="text" id="donationText" class="sl-input" placeholder="Text to display (Ex: Thank you for your donation)">
+        
+        <input type="text" id="donationOutput" class="sl-input output-link" readonly placeholder="[The donation link will appear here]">
+        
+        <button class="copy-btn" onclick="copyDonationLink()" id="copyDonationBtn">Copy Donation Link 💸</button>
     </div>
 
     <script>
@@ -204,7 +216,7 @@
             copyBtn.style.backgroundColor = "#ff003c";
         }
 
-        // --- LINK GENERATOR LOGIC ---
+        // --- GENERAL LINK GENERATOR LOGIC ---
         const linkUrl = document.getElementById('linkUrl');
         const linkText = document.getElementById('linkText');
         const linkOutput = document.getElementById('linkOutput');
@@ -237,6 +249,41 @@
         function resetLinkButton() {
             copyLinkBtn.textContent = "Copy Link 🔗";
             copyLinkBtn.style.backgroundColor = "#ff003c";
+        }
+
+        // --- DONATION LINK GENERATOR LOGIC ---
+        const donationUuid = document.getElementById('donationUuid');
+        const donationText = document.getElementById('donationText');
+        const donationOutput = document.getElementById('donationOutput');
+        const copyDonationBtn = document.getElementById('copyDonationBtn');
+
+        function updateDonationLink() {
+            let uuid = donationUuid.value.trim();
+            let text = donationText.value.trim();
+            
+            if (uuid !== "" || text !== "") {
+                donationOutput.value = `[secondlife:///app/agent/${uuid}/${text}]`;
+            } else {
+                donationOutput.value = "";
+            }
+            resetDonationButton();
+        }
+
+        donationUuid.addEventListener('input', updateDonationLink);
+        donationText.addEventListener('input', updateDonationLink);
+
+        function copyDonationLink() {
+            if (!donationOutput.value) return;
+            donationOutput.select();
+            document.execCommand('copy');
+            copyDonationBtn.textContent = "Donation Link Copied! ✔️";
+            copyDonationBtn.style.backgroundColor = "#4CAF50"; 
+            window.getSelection().removeAllRanges();
+        }
+
+        function resetDonationButton() {
+            copyDonationBtn.textContent = "Copy Donation Link 💸";
+            copyDonationBtn.style.backgroundColor = "#ff003c";
         }
     </script>
 
