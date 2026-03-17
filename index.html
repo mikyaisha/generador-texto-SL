@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador Lamia - Multi Estilos</title>
+    <title>SL Profile Editor - Multi Styles</title>
     <style>
         body {
             background-color: #0a0a0a;
@@ -71,7 +71,7 @@
             font-weight: bold;
             box-shadow: 0 0 8px rgba(255, 0, 60, 0.4);
         }
-        /* Estilos compartidos para textareas y inputs */
+        /* Shared styles for textareas and inputs */
         textarea, .sl-input {
             width: 100%;
             background-color: #1a1a1a;
@@ -124,30 +124,30 @@
         <div class="button-group">
             <button class="style-btn active" id="btn-smallcaps" onclick="setStyle('smallcaps')">Sᴍᴀʟʟ Cᴀᴘs</button>
             <button class="style-btn" id="btn-doublestruck" onclick="setStyle('doublestruck')">𝔻𝕠𝕦𝕓𝕝𝕖 𝕊𝕥𝕣𝕦𝕔𝕜</button>
-            <button class="style-btn" id="btn-gothic" onclick="setStyle('gothic')">𝕲𝖔́𝖙𝖎𝖈𝖔</button>
+            <button class="style-btn" id="btn-gothic" onclick="setStyle('gothic')">𝕲𝖔𝖙𝖍𝖎𝖈</button>
         </div>
 
-        <textarea id="inputText" placeholder="Escribe tu texto normal aquí... (Ej: Paga el peaje)"></textarea>
+        <textarea id="inputText" placeholder="Type your normal text here... (Ex: Pay the toll)"></textarea>
         
-        <textarea id="outputText" readonly placeholder="Aǫᴜí ᴀᴘᴀʀᴇᴄᴇʀá ᴛᴜ ᴛᴇxᴛᴏ ʟɪsᴛᴏ..."></textarea>
+        <textarea id="outputText" readonly placeholder="Yᴏᴜʀ ʀᴇᴀᴅʏ ᴛᴇxᴛ ᴡɪʟʟ ᴀᴘᴘᴇᴀʀ ʜᴇʀᴇ..."></textarea>
         
-        <button class="copy-btn" onclick="copyToClipboard()" id="copyBtn">Copiar al Portapapeles 📋</button>
+        <button class="copy-btn" onclick="copyToClipboard()" id="copyBtn">Copy to Clipboard 📋</button>
     </div>
 
     <div class="container">
-        <h2>Generador de Links SL 🔗</h2>
+        <h2>SL Link Generator 🔗</h2>
         
-        <input type="text" id="linkUrl" class="sl-input" placeholder="Paste the URL here (Ej: secondlife:///app/... o https://...)">
+        <input type="text" id="linkUrl" class="sl-input" placeholder="Paste the URL here (Ex: secondlife:///app/... or https://...)">
         
-        <input type="text" id="linkText" class="sl-input" placeholder="Text to display (e.g., Thank you very much for your donation)">
+        <input type="text" id="linkText" class="sl-input" placeholder="Text to display (Ex: Thank you for your donation)">
         
-        <input type="text" id="linkOutput" class="sl-input output-link" readonly placeholder="[El link formateado aparecerá aquí]">
+        <input type="text" id="linkOutput" class="sl-input output-link" readonly placeholder="[The formatted link will appear here]">
         
-        <button class="copy-btn" onclick="copyLink()" id="copyLinkBtn">Copiar Link 🔗</button>
+        <button class="copy-btn" onclick="copyLink()" id="copyLinkBtn">Copy Link 🔗</button>
     </div>
 
     <script>
-        // --- LÓGICA DEL CONVERTIDOR DE TEXTO ---
+        // --- TEXT CONVERTER LOGIC ---
         const fonts = {
             smallcaps: {
                 'a':'ᴀ','b':'ʙ','c':'ᴄ','d':'ᴅ','e':'ᴇ','f':'ғ','g':'ɢ','h':'ʜ','i':'ɪ','j':'ᴊ','k':'ᴋ','l':'ʟ','m':'ᴍ','n':'ɴ','o':'ᴏ','p':'ᴘ','q':'ǫ','r':'ʀ','s':'s','t':'ᴛ','u':'ᴜ','v':'ᴠ','w':'ᴡ','x':'x','y':'ʏ','z':'ᴢ',
@@ -194,17 +194,17 @@
             if (!outputText.value) return;
             outputText.select();
             document.execCommand('copy');
-            copyBtn.textContent = "¡Copiado! ✔️";
+            copyBtn.textContent = "Copied! ✔️";
             copyBtn.style.backgroundColor = "#4CAF50"; 
             window.getSelection().removeAllRanges();
         }
 
         function resetCopyButton() {
-            copyBtn.textContent = "Copiar al Portapapeles 📋";
+            copyBtn.textContent = "Copy to Clipboard 📋";
             copyBtn.style.backgroundColor = "#ff003c";
         }
 
-        // --- LÓGICA DEL GENERADOR DE LINKS ---
+        // --- LINK GENERATOR LOGIC ---
         const linkUrl = document.getElementById('linkUrl');
         const linkText = document.getElementById('linkText');
         const linkOutput = document.getElementById('linkOutput');
@@ -229,19 +229,19 @@
             if (!linkOutput.value) return;
             linkOutput.select();
             document.execCommand('copy');
-            copyLinkBtn.textContent = "¡Enlace Copiado! ✔️";
+            copyLinkBtn.textContent = "Link Copied! ✔️";
             copyLinkBtn.style.backgroundColor = "#4CAF50"; 
             window.getSelection().removeAllRanges();
         }
 
         function resetLinkButton() {
-            copyLinkBtn.textContent = "Copiar Link 🔗";
+            copyLinkBtn.textContent = "Copy Link 🔗";
             copyLinkBtn.style.backgroundColor = "#ff003c";
         }
     </script>
 
     <br>
-        <center><a href="https://websmultimedia.com/contador-de-visitas-gratis" title="Contador De Visitas Gratis">
-        <img style="border: 0px solid; display: inline;" alt="contador de visitas" src="https://websmultimedia.com/contador-de-visitas.php?id=24473"></a><br><a style="color: #666; font-size: 14px; text-decoration: none;">Thank you for your donation L$</a></center>
+        <center><a href="https://websmultimedia.com/contador-de-visitas-gratis" title="Free Visit Counter">
+        <img style="border: 0px solid; display: inline;" alt="visit counter" src="https://websmultimedia.com/contador-de-visitas.php?id=24473"></a><br><a style="color: #666; font-size: 14px; text-decoration: none;">Thank you for your donation L$</a></center>
     </body>
 </html>
